@@ -1,10 +1,10 @@
-# 🏆 CS:GO Round Winner Prediction
+# CS:GO Round Winner Prediction
 
 This project aims to predict the **winner of a CS:GO round** using **in-game snapshot data** with machine learning models.
 
 ---
 
-## 📁 Dataset
+## Dataset
 
 - **Source**: Loaded from Google Drive:  
   `csgo_round_snapshots.csv`  
@@ -17,7 +17,7 @@ This project aims to predict the **winner of a CS:GO round** using **in-game sna
 
 ---
 
-## 🔧 Data Preprocessing
+## Data Preprocessing
 
 - Removed **duplicates**: `df.drop_duplicates(inplace=True)`
 - Verified **no null values**
@@ -25,7 +25,7 @@ This project aims to predict the **winner of a CS:GO round** using **in-game sna
 
 ---
 
-## 🔍 Feature & Target Split
+## Feature & Target Split
 
 python
 X = df.iloc[:,:-1]       # All columns except round_winner
