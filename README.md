@@ -1,38 +1,33 @@
-# CS:GO Round Winner Prediction using Machine Learning
+# 🏆 CS:GO Round Winner Prediction
 
-This project aims to predict the winner of a CS:GO round (Counter-Terrorists or Terrorists) using machine learning techniques. The model is trained on structured in-game data to perform binary classification based on various round-specific features such as player health, armor, money, weapon value, grenade value, and map-related data.
+This project aims to predict the **winner of a CS:GO round** using **in-game snapshot data** with machine learning models.
 
-## Project Overview
+---
 
-- **Problem Statement**: Predict which team (CT or T) will win a CS:GO round.
-- **Dataset**: `csgo_round_snapshots.csv` containing ~122,000+ rows and 97 columns.
-- **Target Variable**: `round_winner` (values: CT or T).
-- **Features**: Include map, round time remaining, bomb planted status, health, armor, money, players alive, weapon and grenade values for both teams.
-- **Approach**:
-  - Data Cleaning: Removed duplicates and checked for missing values.
-  - Encoding: Categorical features like `map`, `bomb_planted`, and `round_winner` encoded using Label Encoding.
-  - Feature Selection: All relevant features retained except the target variable.
-  - Train-Test Split: 80% training, 20% testing with a fixed random state for reproducibility.
-  - Model Used: Logistic Regression (initial baseline model).
-  - Evaluation Metrics: Accuracy, Confusion Matrix, Classification Report.
+## 📁 Dataset
 
-## Model Training & Evaluation
+- **Source**: Loaded from Google Drive:  
+  `csgo_round_snapshots.csv`  
+- **Total Rows**: ~122,410  
+- **Columns**: 97 features including:
+  - Player health, armor, money, weapons, and grenades
+  - Map info, bomb planted or not
+  - Number of players alive
+  - Target variable: `round_winner` (Terrorist or Counter-Terrorist)
 
-The logistic regression model was trained using Scikit-learn:
+---
 
+## 🔧 Data Preprocessing
 
+- Removed **duplicates**: `df.drop_duplicates(inplace=True)`
+- Verified **no null values**
+- Converted categorical columns (`map`, `bomb_planted`, `round_winner`) using `LabelEncoder`
 
+---
 
-Baseline Accuracy: ~86% (depending on preprocessing and encoding)
+## 🔍 Feature & Target Split
 
-Insights: The model performs well due to strong game mechanics and clear feature signals like health, weapon value, and bomb status.
+python
+X = df.iloc[:,:-1]       # All columns except round_winner
+y = df['round_winner']   # Target column
 
-
-Technologies Used
-Python
-
-Pandas, NumPy
-
-Scikit-learn
-
-Jupyter Notebook / Google Colab
